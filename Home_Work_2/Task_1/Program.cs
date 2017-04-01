@@ -12,6 +12,7 @@ namespace Task_1
         {
             Console.WriteLine("Hello world");
             Console.WriteLine("goobY");
+            Console.WriteLine("gogly");
         }
     }
 }
