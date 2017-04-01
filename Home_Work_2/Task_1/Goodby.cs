@@ -9,5 +9,6 @@ namespace Task_1
     class Goodby
     {
         public int Goodby2 { get; set; }
+        public int MyProperty { get; set; }
     }
 }
