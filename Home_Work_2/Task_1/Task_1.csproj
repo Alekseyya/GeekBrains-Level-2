@@ -46,6 +46,7 @@
     <Compile Include="AbstractFood.cs" />
     <Compile Include="Animal.cs" />
     <Compile Include="IFeedable.cs" />
+    <Compile Include="IZoo.cs" />
     <Compile Include="Pig.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

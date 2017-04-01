@@ -18,7 +18,7 @@ namespace Task_1
             zoo.Add(wlf);
             zoo.Add(pig);
             zoo.Add(sq);
-            var t = 0; 
+            
 
         }
     }
