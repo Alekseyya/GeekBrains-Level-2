@@ -8,6 +8,6 @@ namespace Task_1
 {
     class Goodby
     {
-        public int Goodby { get; set; }
+        public int Goodby2 { get; set; }
     }
 }
