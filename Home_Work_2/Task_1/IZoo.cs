@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Task_1
 {
-    class Class1
+    public interface IZoo
     {
-        public int MyProperty { get; set; }
+        void Add(Animal animal);
+        void Remote(Animal animal);
     }
 }

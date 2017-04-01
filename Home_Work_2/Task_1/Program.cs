@@ -10,9 +10,16 @@ namespace Task_1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello world");
-            Console.WriteLine("goobY");
-            Console.WriteLine("gogly");
+            Wolf wlf = new Wolf("Petya");
+            Pig pig = new Pig("Grisha");
+            Squirrel sq = new Squirrel("Sergey");
+
+            Zoo zoo = new Zoo();
+            zoo.Add(wlf);
+            zoo.Add(pig);
+            zoo.Add(sq);
+            var t = 0; 
+
         }
     }
 }
