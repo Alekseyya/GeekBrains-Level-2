@@ -10,6 +10,10 @@ namespace Task_1
     {
         public int Goodby2 { get; set; }
         public int MyProperty { get; set; }
+<<<<<<< HEAD
+        public int MyProperty123 { get; set; }
+=======
         public int MyProperty2 { get; set; }
+>>>>>>> master
     }
 }
