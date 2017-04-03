@@ -32,13 +32,8 @@ namespace Task_3
 
         public bool Collision(ICollision o)
         {
-            if (o.Rect.IntersectsWith(this.Rect))
-            {
-               
-                return true;
-            }
-            else
-                return false;
+            return (o.Rect.IntersectsWith(this.Rect));
+            
         }
         //{
         //    pos.X = pos.X + dir.X;
