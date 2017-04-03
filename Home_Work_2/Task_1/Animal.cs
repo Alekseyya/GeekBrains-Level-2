@@ -10,22 +10,25 @@ namespace Task_1
     {
         private string animalName;
         private AnimalType animalType;
+        private AbstractFood.FoodType foodType;
         public string Name
         {
             get { return this.animalName; }
         }
-        protected Animal(string name, AnimalType animalType)
+        protected Animal(string name, AnimalType animalType, AbstractFood.FoodType foodType)
         {
             this.animalName = name;
             this.animalType = animalType;
+            this.foodType = foodType;
             
-
         }
 
         public AnimalType Type
         {
             get { return this.animalType; }
         }
+
+        public AbstractFood.FoodType FoodType { get {return this.foodType;}}
 
         public abstract bool IsHungry { get; set; }
 
