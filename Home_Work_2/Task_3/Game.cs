@@ -18,6 +18,7 @@ namespace Task_3
         static BufferedGraphicsContext context;
         static public BufferedGraphics buffer;
         static public Random rnd = new Random();
+        static Bullet bullet;
 
         static Shantle shatle = new Shantle(new Point(10, 400), new Point(5, 5), new Size(10, 10));
 
