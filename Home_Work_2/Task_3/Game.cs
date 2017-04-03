@@ -20,7 +20,11 @@ namespace Task_3
         static public Random rnd = new Random();
         static Bullet bullet;
 
+        static Action drawActDelegate;
+        static Action updateActDelegate;
+
         static Shantle shatle = new Shantle(new Point(10, 400), new Point(5, 5), new Size(10, 10));
+
 
         // Свойства
         // Ширина и высота игрового поля
@@ -55,8 +59,24 @@ namespace Task_3
 
         }
 
+        private static void destryBullet()
+        {
+            updateActDelegate -= bullet.Update;
+            drawActDelegate -= bullet.Draw;
+            bullet = null;
+        }
         private static void Form_KeyDown(object sender, KeyEventArgs e)
         {
+            if(e.KeyCode == Keys.Space)
+            {
+                if(bullet == null)
+                {
+                    bullet = new Bullet(new Point(shatle.Rect.X + 10, shatle.Rect.Y + 4), new Point(4, 0), new Size(4, 1));
+                    drawActDelegate += bullet.Draw;
+                    updateActDelegate += bullet.Update;
+                    Bullet.BulltDie += destryBullet;
+                }
+            }
             if (e.KeyCode == Keys.Up) shatle.Up();
             if (e.KeyCode == Keys.Down) shatle.Down();
             if (e.KeyCode == Keys.Right) shatle.Right();
@@ -75,6 +95,7 @@ namespace Task_3
         {
             // Проверяем вывод графики
             buffer.Graphics.Clear(Color.Black);
+            drawActDelegate();
             foreach (BaseObject obj in objs)
                 obj.Draw();
             foreach (Asteroid obj in asteroids)
@@ -88,21 +109,27 @@ namespace Task_3
         /// </summary>
         static public void Load()
         {
-            
-           
+            //Обновление всех предметов
+            drawActDelegate = new Action(shatle.Draw);
+            updateActDelegate = new Action(shatle.Update);
+
             //Звезды
             objs = new BaseObject[30];
             for (int i = 0; i < objs.Length; i++)
             {
                 int r = rnd.Next(5, 50);
                 objs[i] = new Star(new Point(500, Game.rnd.Next(0, Game.Height)), new Point(-r, 0), new Size(3, 3));
+                drawActDelegate += objs[i].Draw;
+                updateActDelegate += objs[i].Update;
             }
             //Астероиды
-            asteroids = new Asteroid[3];
+            asteroids = new Asteroid[15];
             for (int i = 0; i < asteroids.Length; i++)
             {
                 int r = rnd.Next(5, 50);
                 asteroids[i] = new Asteroid(new Point(800, Game.rnd.Next(0, Game.Height)), new Point(-5, 0), new Size(r, r));
+                drawActDelegate += asteroids[i].Draw;
+                updateActDelegate += asteroids[i].Update;
             }
 
         }
@@ -111,6 +138,8 @@ namespace Task_3
         /// </summary>
         static public void Update()
         {
+            updateActDelegate();
+
             foreach (BaseObject obj in objs)
                 obj.Update();
             foreach (Asteroid obj in asteroids)

@@ -13,6 +13,11 @@ namespace Task_3
         protected Point pos;
         protected Point dir;
         protected Size size;
+
+        public Rectangle Rect
+        {
+            get { return new Rectangle(pos, size); }
+        }
         public BaseObject(Point pos, Point dir, Size size)
         {
             this.pos = pos;
