@@ -27,7 +27,7 @@ namespace Task_3
             pos.X = pos.X + 20;
             if (pos.X > 800)
             {
-                //BulletDie();
+                BulltDie();
             }
 
         }

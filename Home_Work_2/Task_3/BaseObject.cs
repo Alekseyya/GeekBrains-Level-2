@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Task_3
 {
     //Движение объкутов
-    public abstract class BaseObject
+    abstract class BaseObject : ICollision
     {
         protected Point pos;
         protected Point dir;
@@ -29,6 +29,17 @@ namespace Task_3
         //    Game.buffer.Graphics.DrawEllipse(Pens.White, pos.X, pos.Y, size.Width, size.Height);
         //}
         public abstract void Update();
+
+        public bool Collision(ICollision o)
+        {
+            if (o.Rect.IntersectsWith(this.Rect))
+            {
+               
+                return true;
+            }
+            else
+                return false;
+        }
         //{
         //    pos.X = pos.X + dir.X;
         //    pos.Y = pos.Y + dir.Y;

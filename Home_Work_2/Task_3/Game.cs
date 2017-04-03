@@ -61,6 +61,7 @@ namespace Task_3
 
         private static void destryBullet()
         {
+            Bullet.BulltDie -= destryBullet;
             updateActDelegate -= bullet.Update;
             drawActDelegate -= bullet.Draw;
             bullet = null;
@@ -100,6 +101,7 @@ namespace Task_3
                 obj.Draw();
             foreach (Asteroid obj in asteroids)
                 obj.Draw();
+            //bullet.Draw();
             shatle.Draw();
             buffer.Render();
 
@@ -109,7 +111,7 @@ namespace Task_3
         /// </summary>
         static public void Load()
         {
-            //Обновление всех предметов
+            //Обновление шатла
             drawActDelegate = new Action(shatle.Draw);
             updateActDelegate = new Action(shatle.Update);
 
@@ -145,8 +147,12 @@ namespace Task_3
             foreach (Asteroid obj in asteroids)
             {
                 obj.Update();
+                if(obj​.Collision(bullet)) { System.Media.SystemSounds.Hand.Play();
                 
+                }
+                    
             }
+            bullet.Update();
             shatle.Update();
         }
 
