@@ -32,6 +32,7 @@ namespace Task_1
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
         
     }
 }
