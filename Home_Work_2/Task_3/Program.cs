@@ -26,6 +26,7 @@ namespace Task_3
         [STAThread]
         static void Main()
         {
+
             Form form = new Form();
             form.Width = 800;
             form.Height = 600;

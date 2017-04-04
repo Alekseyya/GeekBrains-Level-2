@@ -24,7 +24,8 @@ namespace Task_3
         {
             
         }
-        
+
+               
         public void Up()
         {
             if (pos.Y > 20)
