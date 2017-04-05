@@ -9,39 +9,52 @@ using System.Threading.Tasks;
 ///
 namespace Task_2
 {
-    public delegate void MethodContainer<T> (T value);
-
     
-    class ClassCounter<T>
+    public class MyEventArgs : EventArgs
+    {
+        private string msg;
+        private int phone;
+
+        public MyEventArgs(string messageData, int phone)
+        {
+            msg = messageData;
+            this.phone = phone;
+        }
+        public string Message
+        {
+            get { return msg; }
+            set { msg = value; }
+        }
+        public int MyPhone { get { return phone; } set { phone = value; } }
+    }
+
+    public class ClassCounter
     {
         
-        public event MethodContainer<T> onCount;
-        public void Count()
+        public event EventHandler<MyEventArgs> onCount;
+
+        //Не получилось, не знаю как вызвать данное событие
+        public void DemoEvent(string val, int phone)
         {
             
-            for (int i = 0; i < 20; i++)
-            {
-                if(i==20)
-                {
-                    onCount(13);
-                }
-
-            }
+            EventHandler<MyEventArgs> temp = onCount;
+            if (temp != null)
+                temp(this, new MyEventArgs(val, phone));
         }
     }
 
     class Handler_1
     {
-        public void Message<T>(T value)
+        public void Message(object src, MyEventArgs mea)
         {
-            Console.WriteLine($"Оп хэй а ла лэй!! {value}");
+            Console.WriteLine($"Оп хэй а ла лэй!! {mea.Message} {mea.MyPhone}");
         }
     }
     class Handler_2
     {
-        public void Message<T>(T value)
+        public void Message(object src, MyEventArgs mea)
         {
-            Console.WriteLine($"Вася танчит как поц {value}");
+            Console.WriteLine($"Вася танчит как поц {mea.Message} {mea.MyPhone}");
         }
     }
 
@@ -49,15 +62,14 @@ namespace Task_2
     {
         static void Main(string[] args)
         {
-            ClassCounter<int> counter = new ClassCounter<int>();
+            ClassCounter counter = new ClassCounter();
             Handler_1 handler1 = new Handler_1();
-            Handler_2 handler2 = new Handler_2();
-            counter.onCount += handler1.Message;
-            counter.onCount += handler2.Message;
+            Handler_2 handker2 = new Handler_2();
+            counter.onCount += new EventHandler<MyEventArgs>(handler1.Message);
+            counter.onCount += new EventHandler<MyEventArgs>(handker2.Message);
 
-            
-            counter.Count();
-
+            counter.DemoEvent(" ссссу ууу  ВАААААСЯЯ!! ШО ты РОРБИШЬ!!!!!!!", 228);
+            Console.ReadKey();
         }
 
     }
