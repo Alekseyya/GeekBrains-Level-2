@@ -9,7 +9,7 @@ namespace Task_1
 {
     interface ILibrary
     {
-        void Add<T>(params T[] objct);
+        void Add<T>(params T[] objct) where T: Book;
         
 
     }

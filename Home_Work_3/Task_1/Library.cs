@@ -22,7 +22,7 @@ namespace Task_1
         }
 
         public List<Book> LibraryList { get{ return this.library; } }
-        public void Add<T>(params T[] objct)
+        public void Add<T>(params T[] objct) where T : Book
         {
             foreach(var i in objct)
             {
