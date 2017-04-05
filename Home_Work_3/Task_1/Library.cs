@@ -7,19 +7,31 @@ using System.Threading.Tasks;
 
 namespace Task_1
 {
+    public delegate void ProcessBookDelegate();
+
     public class Library : IEnumerable<Book>, ILibrary
     {
         private List<Book> library;
-        public delegate void ProcessBookDelegate(Book book);
+        
 
         public Library()
         {
+            
             this.library = new List<Book>();
-
+            //Calculate calculate = new Calculate(library);
         }
 
-        public void AddBook()
+        public List<Book> LibraryList { get{ return this.library; } }
+        public void Add<T>(params T[] objct)
         {
+            Book book = objct as Book;
+            if (book != null)
+            {
+                this.library.Add(book);
+            }else
+            {
+                throw new Exception("Невозможно включить данный бъект в список Books");
+            }
             
         }
        
@@ -28,7 +40,7 @@ namespace Task_1
 
         public void ProcessBook(ProcessBookDelegate processBookDelegate)
         {
-            
+            processBookDelegate();
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

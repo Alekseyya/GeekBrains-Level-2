@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 //Ярчук Алексей
 
 /// <summary>
-/// Разработать класс описывающий библиотеку, Bookstore. Класс должен поддерживать возможность добавлять книги в библиотеку, метод AddBook, и обрабатывать книги, метод ProcessBooks(ProcessBookDelegate processBook).
+/// Разработать класс описывающий библиотеку, Bookstore. Класс должен поддерживать возможность добавлять книги в библиотеку,
+/// метод AddBook, и обрабатывать книги, метод ProcessBooks(ProcessBookDelegate processBook).
 /// Книги в библиотеке имеют следующие атрибуты:
 /// public string Title; // Название.
 /// public string Author; // Автор.
@@ -27,6 +29,24 @@ namespace Task_1
     {
         static void Main(string[] args)
         {
+            Library lib = new Library();
+            Calculate cal = new Calculate(lib.LibraryList);
+
+            lib.Add(new Book("Война и мир", "Булгаков", 1278, false), new Book("C# 7", "Я", 4000, true)); //дописать пару книг
+
+            ProcessBookDelegate process;
+            ProcessBookDelegate sortlist = cal.SortDec;
+            ProcessBookDelegate averageCost = cal.GetAverageCost;
+            ProcessBookDelegate totalCost = cal.GetTotalCost;
+
+            process = sortlist;
+            process += averageCost;
+            process += totalCost;
+
+
+            lib.ProcessBook(process);
+            
+            
         }
     }
 }

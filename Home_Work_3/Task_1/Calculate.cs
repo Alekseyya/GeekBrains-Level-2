@@ -6,24 +6,46 @@ using System.Threading.Tasks;
 
 namespace Task_1
 {
-    class Calculate : ICommand
+    public class Calculate
     {
         private List<Book> list;
+        public double averageCost { get; set; } 
+        public double totalCost { get; set; }
+        public List<Book> sortDec { get; set; }
+
         public Calculate(List<Book> list)
         {
             this.list = new List<Book>();
             this.list = list;
         }
 
-        public double AverageCost() => (double)list.Where(book => book.CSharp == true).Sum(item => item.Price);
+        public List<Book> List { get { return this.list;} }
+
+        public void SortDec()
+        {
+            List<Book> sortlist = list;
+            sortlist.Sort();
+            sortDec= sortlist;
+        }
+
+        public void GetAverageCost()
+        {
+            
+            averageCost = (double)list.Where(book => book.CSharp == true).Sum(item => item.Price);
+        }
         
         
 
-        public double TotalCost()
+        public void GetTotalCost()
         {
-            double summCSharpbooks = AverageCost();
-            int scharpCountBooks = (int)list.Where(book => book.CSharp == true).Count();
-            return (double)summCSharpbooks / summCSharpbooks;
+            
+           double summCSharpbooks = (double)list.Where(book => book.CSharp == true).Sum(item => item.Price);
+           int scharpCountBooks = (int)list.Where(book => book.CSharp == true).Count();
+           totalCost= (double)summCSharpbooks / summCSharpbooks;
+            
+            
         }
+
+        
     }
 }
