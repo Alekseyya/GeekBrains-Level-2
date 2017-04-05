@@ -14,6 +14,7 @@ namespace Task_2
     
     class ClassCounter<T>
     {
+        
         public event MethodContainer<T> onCount;
         public void Count()
         {
@@ -22,7 +23,7 @@ namespace Task_2
             {
                 if(i==20)
                 {
-                    onCount(T);
+                    onCount(13);
                 }
 
             }
@@ -31,14 +32,14 @@ namespace Task_2
 
     class Handler_1
     {
-        public void Message(string value)
+        public void Message<T>(T value)
         {
             Console.WriteLine($"Оп хэй а ла лэй!! {value}");
         }
     }
     class Handler_2
     {
-        public void Message(string value)
+        public void Message<T>(T value)
         {
             Console.WriteLine($"Вася танчит как поц {value}");
         }
@@ -48,12 +49,13 @@ namespace Task_2
     {
         static void Main(string[] args)
         {
-            ClassCounter<string> counter = new ClassCounter<string>();
+            ClassCounter<int> counter = new ClassCounter<int>();
             Handler_1 handler1 = new Handler_1();
             Handler_2 handler2 = new Handler_2();
-
             counter.onCount += handler1.Message;
             counter.onCount += handler2.Message;
+
+            
             counter.Count();
 
         }
