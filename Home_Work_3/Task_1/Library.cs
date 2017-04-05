@@ -24,14 +24,19 @@ namespace Task_1
         public List<Book> LibraryList { get{ return this.library; } }
         public void Add<T>(params T[] objct)
         {
-            Book book = objct as Book;
-            if (book != null)
+            foreach(var i in objct)
             {
-                this.library.Add(book);
-            }else
-            {
-                throw new Exception("Невозможно включить данный бъект в список Books");
+                Book book = i as Book;
+                if (book != null)
+                {
+                    this.library.Add(book);
+                }
+                else
+                {
+                    throw new Exception("Невозможно включить данный бъект в список Books");
+                }
             }
+            
             
         }
        

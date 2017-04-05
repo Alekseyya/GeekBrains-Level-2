@@ -29,11 +29,23 @@ namespace Task_1
     {
         static void Main(string[] args)
         {
+
+            Test();
+
+            Console.ReadKey();
+            
+        }
+        static void Test()
+        {
             Library lib = new Library();
+
+            //обававляем несколько книг
+            lib.Add(new Book("Война и мир", "Булгаков", 1278, false), new Book("C# 7", "Я", 4000, true),
+                new Book("Pro C#", "Troelsen", 2000, true), new Book("C#9", "Rihter", 1500, true));
+
             Calculate cal = new Calculate(lib.LibraryList);
 
-            lib.Add(new Book("Война и мир", "Булгаков", 1278, false), new Book("C# 7", "Я", 4000, true)); //дописать пару книг
-
+            //Запускаем все функции связаные с библиотекой
             ProcessBookDelegate process;
             ProcessBookDelegate sortlist = cal.SortDec;
             ProcessBookDelegate averageCost = cal.GetAverageCost;
@@ -44,9 +56,12 @@ namespace Task_1
             process += totalCost;
 
 
+            //передаем делегат с зарегистрироваными функциями в метода для выполнения
             lib.ProcessBook(process);
-            
-            
+
+            //вывести на консоль
+            cal.Print();
+
         }
     }
 }

@@ -16,14 +16,15 @@ namespace Task_1
 
         
 
-        public Book(string Title, string Autor, decimal Price, bool CSharp) //Писать в конструкторе тру/фолс на кажлой книге фигня(передалать)
+        public Book(string _title, string _autor, decimal _price, bool _cSharp) //Писать в конструкторе тру/фолс на кажлой книге фигня(передалать)
         {
-            this.title = Title;
-            this.author = Author;
-            this.price = Price;
-            this.cSharp = CSharp;
+            this.title = _title;
+            this.author = _autor;
+            this.price = _price;
+            this.cSharp = _cSharp;
         }
-        public string Author { get { return this.Author; } }
+        public string Author { get { return this.author; } }
+        public string Title { get { return this.title; } }
         public decimal Price { get { return this.price; } }
         public bool CSharp { get { return this.cSharp; } }
 
@@ -31,7 +32,7 @@ namespace Task_1
         {
             Book p = other as Book;
             if (p != null)
-                return this.price.CompareTo(p.price);
+                return -1*this.price.CompareTo(p.price);
             else
                 throw new Exception("Невозможно сравнить два объекта");
         }
