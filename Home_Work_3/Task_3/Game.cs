@@ -101,7 +101,7 @@ namespace Task_3
                 obj.Draw();
             foreach (Asteroid obj in asteroids)
                 obj.Draw();
-            //bullet.Draw();
+            
             shatle.Draw();
             buffer.Render();
 
@@ -147,12 +147,19 @@ namespace Task_3
             foreach (Asteroid obj in asteroids)
             {
                 obj.Update();
-                if(obj​.Collision(bullet)) { System.Media.SystemSounds.Hand.Play();
-                
+                if (bullet != null)
+                {
+                    if (obj​.Collision(bullet))
+                    {
+                        System.Media.SystemSounds.Hand.Play();
+                        destryBullet();
+                        break;
+                    }
                 }
+                
                     
             }
-            bullet.Update();
+            
             shatle.Update();
         }
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using log4net;
+using log4net.Config;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -10,6 +12,11 @@ namespace Task_3
     //Движение объкутов
     abstract class BaseObject : ICollision
     {
+        
+
+        // Так и не понял почему он не работает у меня не работает логер. В файле assemblyifo  подключил, потом в App.config тоже
+        // создал такой экземляр
+        public static readonly ILog log = LogManager.GetLogger(typeof(BaseObject));
         protected Point pos;
         protected Point dir;
         protected Size size;
@@ -32,17 +39,17 @@ namespace Task_3
 
         public bool Collision(ICollision o)
         {
-            return (o.Rect.IntersectsWith(this.Rect));
+            if (o.Rect.IntersectsWith(this.Rect))
+            {
+                //должен быть вывод в файл логов
+                //log.Debug("Hello!");
+                return true;
+            }
+            return false;
+           
             
         }
-        //{
-        //    pos.X = pos.X + dir.X;
-        //    pos.Y = pos.Y + dir.Y;
-        //    if (pos.X < 0) dir.X = -dir.X;
-        //    if (pos.X > Game.Width) dir.X = -dir.X;
-        //    if (pos.Y < 0) dir.Y = -dir.Y;
-        //    if (pos.Y > Game.Height) dir.Y = -dir.Y;
-        //}
+        
 
     }
 }
