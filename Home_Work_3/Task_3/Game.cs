@@ -5,12 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace Task_3
 {
+
     static class Game
     {
-        
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool AllocConsole();
+
         static BaseObject[] objs;
         
         static Asteroid[] asteroids;
@@ -35,7 +40,7 @@ namespace Task_3
         }
         static public void Init(Form form)
         {
-
+            AllocConsole();
             //обработка события коробля
             form.KeyDown += Form_KeyDown;
             // Графическое устройство для вывода графики            

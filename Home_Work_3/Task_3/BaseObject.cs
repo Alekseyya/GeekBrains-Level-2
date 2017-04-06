@@ -41,8 +41,14 @@ namespace Task_3
         {
             if (o.Rect.IntersectsWith(this.Rect))
             {
+
+                
                 //должен быть вывод в файл логов
-                //log.Debug("Hello!");
+                log4net.LogicalThreadContext.Properties["X"] = Rect.X.ToString();
+                log4net.LogicalThreadContext.Properties["Y"] = Rect.Y.ToString();
+                log4net.LogicalThreadContext.Properties["objectX"] = o.Rect.X.ToString();
+                log4net.LogicalThreadContext.Properties["objectY"] = o.Rect.Y.ToString();
+                log.Info("Collosion");
                 return true;
             }
             return false;
