@@ -65,51 +65,52 @@ namespace Task_1
         
         private void CBEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ComboBox cmb = (ComboBox)sender;
-            TextBox EmpName = new TextBox();
-            ListBox EmpEmployee = new ListBox();
-            Button change = new Button();
+            ChangeEmployee 
+            //ComboBox cmb = (ComboBox)sender;
+            //TextBox EmpName = new TextBox();
+            //ListBox EmpEmployee = new ListBox();
+            //Button change = new Button();
 
            
-            //Настройки формы
-            Form form1 = new Form();
-            form1.Text = $"Изменение сотрудников {cmb.SelectedItem} ";
-            form1.Width = 500;
+            ////Настройки формы
+            //Form form1 = new Form();
+            //form1.Text = $"Изменение сотрудников {cmb.SelectedItem} ";
+            //form1.Width = 500;
             
-            //Отрисовка кнопочки button
-            change.Parent = form1;
-            change.Text = "Изменить";
-            change.Top = 170;
-            change.Left = 40;
-            change.Show();
+            ////Отрисовка кнопочки button
+            //change.Parent = form1;
+            //change.Text = "Изменить";
+            //change.Top = 170;
+            //change.Left = 40;
+            //change.Show();
 
-            //текст департамент textbox
-            EmpName.Parent = form1;
-            EmpName.Top = 100;
-            EmpName.Left = 40;
+            ////текст департамент textbox
+            //EmpName.Parent = form1;
+            //EmpName.Top = 100;
+            //EmpName.Left = 40;
             
-            //сотрудники департамента listbox
-            EmpEmployee.Parent = form1;
-            EmpEmployee.Top = 100;
-            EmpEmployee.Left = 170;
-            //var t = listEmployee.Where(id => id.Id == listDepartament.Find(name => name.Name == cmb.SelectedItem).Id).Select(name => name.Name).ToList();
-            EmpEmployee.Items.AddRange(listEmployee.Select(name => name.Name).ToArray());
-            form1.Show();
+            ////сотрудники департамента listbox
+            //EmpEmployee.Parent = form1;
+            //EmpEmployee.Top = 100;
+            //EmpEmployee.Left = 170;
+            ////var t = listEmployee.Where(id => id.Id == listDepartament.Find(name => name.Name == cmb.SelectedItem).Id).Select(name => name.Name).ToList();
+            //EmpEmployee.Items.AddRange(listEmployee.Select(name => name.Name).ToArray());
+            //form1.Show();
 
-            EmpEmployee.SelectedIndexChanged += (s, ev) =>
-            {
-                ListBox comboxEmployee = (ListBox)s;
-                EmpName.Text = comboxEmployee.SelectedItem.ToString();
-            };
+            //EmpEmployee.SelectedIndexChanged += (s, ev) =>
+            //{
+            //    ListBox comboxEmployee = (ListBox)s;
+            //    EmpName.Text = comboxEmployee.SelectedItem.ToString();
+            //};
 
-            //изменение
-            change.Click += (send, ee) =>
-            {
-                var indexEmp = listEmployee.FindIndex(index => index.Name == (string)EmpEmployee.SelectedItem);
-                listEmployee[indexEmp].Name = EmpName.Text;
-                MessageBox.Show($"Сотрудник {EmpEmployee.SelectedItem} изменено на {EmpName.Text}");
+            ////измbнение
+            //change.Click += (send, ee) =>
+            //{
+            //    var indexEmp = listEmployee.FindIndex(index => index.Name == (string)EmpEmployee.SelectedItem);
+            //    listEmployee[indexEmp].Name = EmpName.Text;
+            //    MessageBox.Show($"Сотрудник {EmpEmployee.SelectedItem} изменено на {EmpName.Text}");
 
-            };
+            //};
             
             form1.FormClosed += Form1_Closed;
 
@@ -198,6 +199,7 @@ namespace Task_1
             EmpEmployee.Parent = form1;
             EmpEmployee.Top = 100;
             EmpEmployee.Left = 170;
+
 
             ageTextbox.Parent = form1;
             ageTextbox.Top = 100;
