@@ -43,6 +43,7 @@ namespace Task_1
 
 
         }
+        public Form GetForm { get { return form1; } }
 
         private void Form1_Closed(object sender, FormClosedEventArgs e)
         {
@@ -53,7 +54,12 @@ namespace Task_1
         {
             listDepartament[indexDep].Name = DepName.Text;
             MessageBox.Show($"Департамент {cmb.SelectedItem} изменено на {DepName.Text}");
+            ClearComponents();
             Update();
+        }
+        public  void ClearComponents()
+        {
+            DepEmployee.Items.Clear();
         }
 
         public override void FormParametrs()
@@ -83,7 +89,8 @@ namespace Task_1
 
         public override void Update()
         {
-            DepEmployee.Items.AddRange(listEmployee.Where(id => id.Id == listDepartament.Find(name => name.Name == (string)cmb.SelectedItem).Id).Select(name => name.Name).ToArray());
+            
+            DepEmployee.Items.AddRange(listEmployee.Where(id => id.Id == indexDep).Select(name => name.Name).ToArray());
         }
     }
 }

@@ -36,6 +36,7 @@ namespace Task_1
 
             change.Click += AddEssence;
         }
+        public Form GetForm { get { return form1; } }
         public override void AddEssence(object sender, EventArgs e)
         {
             

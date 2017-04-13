@@ -32,6 +32,7 @@ namespace Task_1
             addDep.Click += AddEssence;
             Clear += ClearComponents;
         }
+        public Form GetForm { get { return form1; } }
         public override void AddEssence(object sender, EventArgs e)
         {
             if (nameDep.Text != "")

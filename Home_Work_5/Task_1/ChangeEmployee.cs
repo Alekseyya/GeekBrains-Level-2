@@ -30,6 +30,8 @@ namespace Task_1
 
         }
 
+        public Form GetForm { get { return form1; }  }
+
         private void Button_Change(object sender, EventArgs e)
         {
             var indexEmp = listEmployee.FindIndex(index => index.Name == (string)EmpEmployee.SelectedItem);
