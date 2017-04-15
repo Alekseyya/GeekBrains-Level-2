@@ -25,29 +25,50 @@ namespace Task_2
         public List<Model.Url> ListUrl { get; set; }
 
         static object locker = new object();
-        public async void AddGrid()
+        public async Task AddGrid()
         {
+            Task allTasks = null;
+            try
+            {
+                Task clear = Clear();
+                Task update = UpdateGrid();
+                 
 
+                allTasks = Task.WhenAll(clear,update);
+                await allTasks;
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
             
-            await UpdateGrid();
-
-
-
+            
         }
 
         private Task Clear()
         {
             return Task.Run(() =>
             {
+                var index = 0;
                 while (dataGridView1.Rows.Count >= 1)
                 {
-                    dataGridView1.Rows.RemoveAt(0);
+                    if (!dataGridView1.Rows[index].IsNewRow)
+                    {
+                        dataGridView1.Rows[index].Cells["Url"].Value = "";
+                        dataGridView1.Rows[index].Cells["Error"].Value = "";
+                        dataGridView1.Rows[index].Cells["Response"].Value = "";
+                        index++;
+                    }
+                    else { break; }
+                    
 
                 }
 
             });
         }
-        private Task UpdateGrid()
+        public Task UpdateGrid()
         {
             
                 return Task.Run(() =>
@@ -104,7 +125,7 @@ namespace Task_2
             
         }
 
-        private void buttonRefrash_Click(object sender, EventArgs e)
+        private async void buttonRefrash_Click(object sender, EventArgs e)
         {
             AddGrid();
         }
