@@ -38,6 +38,7 @@
             this.buttonClearGrid = new System.Windows.Forms.Button();
             this.buttonExecuteResponce = new System.Windows.Forms.Button();
             this.buttonRefrash = new System.Windows.Forms.Button();
+            this.buttonTestData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,11 +125,22 @@
             this.buttonRefrash.UseVisualStyleBackColor = true;
             this.buttonRefrash.Click += new System.EventHandler(this.buttonRefrash_Click);
             // 
+            // buttonTestData
+            // 
+            this.buttonTestData.Location = new System.Drawing.Point(12, 207);
+            this.buttonTestData.Name = "buttonTestData";
+            this.buttonTestData.Size = new System.Drawing.Size(100, 42);
+            this.buttonTestData.TabIndex = 7;
+            this.buttonTestData.Text = "Тестовые данные";
+            this.buttonTestData.UseVisualStyleBackColor = true;
+            this.buttonTestData.Click += new System.EventHandler(this.buttonTestData_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(612, 261);
+            this.Controls.Add(this.buttonTestData);
             this.Controls.Add(this.buttonRefrash);
             this.Controls.Add(this.buttonExecuteResponce);
             this.Controls.Add(this.buttonClearGrid);
@@ -156,6 +168,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Error;
         private System.Windows.Forms.DataGridViewTextBoxColumn Response;
         private System.Windows.Forms.Button buttonRefrash;
+        private System.Windows.Forms.Button buttonTestData;
     }
 }
 

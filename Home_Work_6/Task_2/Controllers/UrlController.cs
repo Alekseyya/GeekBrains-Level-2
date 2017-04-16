@@ -25,24 +25,24 @@ namespace Task_2.Controllers
 
         }
 
-        public async void MakeRequest()
+        public async Task  MakeRequest()
         {
-            
-            foreach(var i in this.form1.ListUrl)
+            await Task.Run(() =>
             {
-                System.Diagnostics.Stopwatch sw = new Stopwatch();
-                sw.Start();
-                var errorOrLength = ResponseResult(i.Name).GetAwaiter().GetResult();
-                sw.Stop();
-                i.ErrorOrLength = errorOrLength;
-                i.StopWatch = (sw.ElapsedMilliseconds / 100.0).ToString();
-            }
+                foreach (var i in this.form1.ListUrl)
+                {
+                    System.Diagnostics.Stopwatch sw = new Stopwatch();
+                    sw.Start();
+                    var errorOrLength = ResponseResult(i.Name).GetAwaiter().GetResult();
+                    sw.Stop();
+                    i.ErrorOrLength = errorOrLength;
+                    i.StopWatch = (sw.ElapsedMilliseconds / 100.0).ToString();
+                }
 
-           
+            });
+            
         }
-
         
-
         private void RequestSettings()
         {
             _request.Method = "GET";
@@ -77,6 +77,25 @@ namespace Task_2.Controllers
                 });
             }
             
+        }
+
+        public async Task ReadFile()
+        {
+            
+            await Task.Run(() =>
+            {
+                form1.ListUrl = new List<Model.Url>();
+                var fileStream = new FileStream("Sites.txt", FileMode.Open, FileAccess.Read);
+                using (StreamReader streamReader = new StreamReader(fileStream, Encoding.UTF8))
+                {
+                    string line;
+                    while ((line = streamReader.ReadLine()) != null)
+                    {
+                        this.form1.ListUrl.Add(new Model.Url(line, "", ""));
+                    }
+                }
+               
+            });
         }
 
     }

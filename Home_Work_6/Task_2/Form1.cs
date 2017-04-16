@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Task_2.Controllers;
@@ -24,19 +25,15 @@ namespace Task_2
         }
         public List<Model.Url> ListUrl { get; set; }
 
-        static object locker = new object();
+        
         public async Task AddGrid()
         {
-            Task allTasks = null;
+            
             try
             {
-                Task clear = Clear();
-                Task update = UpdateGrid();
-                 
-
-                allTasks = Task.WhenAll(clear,update);
-                await allTasks;
-
+                //if(Clear().GetAwaiter().GetResult())
+                await UpdateGrid();
+               
             }
             catch (Exception ex)
             {
@@ -47,31 +44,14 @@ namespace Task_2
             
         }
 
-        private Task Clear()
+        private void ClearGrid()
         {
-            return Task.Run(() =>
-            {
-                var index = 0;
-                while (dataGridView1.Rows.Count >= 1)
-                {
-                    if (!dataGridView1.Rows[index].IsNewRow)
-                    {
-                        dataGridView1.Rows[index].Cells["Url"].Value = "";
-                        dataGridView1.Rows[index].Cells["Error"].Value = "";
-                        dataGridView1.Rows[index].Cells["Response"].Value = "";
-                        index++;
-                    }
-                    else { break; }
-                    
-
-                }
-
-            });
+            dataGridView1.Rows.Clear();
         }
-        public Task UpdateGrid()
+        public async Task UpdateGrid()
         {
             
-                return Task.Run(() =>
+                await Task.Run(() =>
                 {
                     int index = 0;
                     foreach (var url in ListUrl)
@@ -92,6 +72,7 @@ namespace Task_2
         {
             this.dataGridView1.Rows.Add(textBoxUrl.Text);
             textBoxUrl.Clear();
+            buttonRefrash.Enabled = false;
             
         }
 
@@ -100,21 +81,42 @@ namespace Task_2
             this.controller = controller;
         }
 
-
-        private void buttonExecuteResponce_Click(object sender, EventArgs e)
+        private Task ReadGridAndWriteList()
         {
-            this.ListUrl = new List<Model.Url>();
-            
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            return Task.Run(() =>
             {
-                if(!row.IsNewRow)
-                    this.ListUrl.Add(new Model.Url(row.Cells["Url"].Value.ToString(), "", ""));
-                
-                
+                this.ListUrl = new List<Model.Url>();
+
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (!row.IsNewRow)
+                        this.ListUrl.Add(new Model.Url(row.Cells["Url"].Value.ToString(), "", ""));
+
+
+                }
+
+            });
+            
+        }
+        private void AddGridIsNewElement()
+        {
+
+            for (int i = 0; i < ListUrl.Count; i++)
+            {
+                dataGridView1.Rows.Add();
+
             }
-           
-           controller.MakeRequest();
-           buttonRefrash.Enabled = true;
+            
+        }
+
+        private async void buttonExecuteResponce_Click(object sender, EventArgs e)
+        {
+
+            await ReadGridAndWriteList();
+            
+            await controller.MakeRequest();
+            
+            buttonRefrash.Enabled = true;
             
         }
 
@@ -122,12 +124,35 @@ namespace Task_2
         {
             this.dataGridView1.Rows.Clear();
             this.ListUrl.Clear();
+            buttonRefrash.Enabled = false;
             
         }
 
         private async void buttonRefrash_Click(object sender, EventArgs e)
         {
             AddGrid();
+            
+        }
+
+        
+        private async void buttonTestData_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                await controller.ReadFile();
+                ClearGrid();
+                AddGridIsNewElement();
+                await UpdateGrid();
+               
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            
+            
         }
     }
 }
