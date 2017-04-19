@@ -1,0 +1,15 @@
+﻿--Cyrillic_General_CI_AS
+--select * from ::fn_helpcollations()
+ALTER DATABASE Test7 SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+GO
+
+ALTER DATABASE Test7 COLLATE Cyrillic_General_CI_AS
+GO
+
+ALTER DATABASE Test7 SET MULTI_USER;
+GO
+
+CREATE PROCEDURE [dbo].[sp_GetPeople]
+AS
+    SELECT * FROM People
+GO
