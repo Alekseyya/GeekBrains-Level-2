@@ -68,7 +68,15 @@ namespace Task_1.Model.Repository
 
         public void Update(Employee item)
         {
-            context.Entry(item).State = EntityState.Modified;
+            //не придумал вариант лучше чем, перезаполнить поле если какое-то из полей на заполнили на форме.
+            Employee emp = context.Employees.Find(item.Id);
+            emp.Id = (item.Id != 0) ? item.Id : emp.Id;
+            emp.Name = (item.Name!=null) ? item.Name: emp.Name;
+            emp.Age = (item.Age != 0) ? item.Age : emp.Age;
+            emp.DepartmentId = (item.DepartmentId != null) ? item.DepartmentId : emp.DepartmentId;
+            emp.Salary = (item.Salary != 0) ? item.Salary : emp.Salary;
+
+            //context.Entry(item).State = EntityState.Modified;
             context.SaveChanges();
         }
     }

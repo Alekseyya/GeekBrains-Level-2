@@ -39,6 +39,7 @@
             this.DeleteSelectEmployee = new System.Windows.Forms.Button();
             this.ClearFields = new System.Windows.Forms.Button();
             this.Salary = new System.Windows.Forms.TextBox();
+            this.Update = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeesGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,7 +122,7 @@
             // 
             // ClearFields
             // 
-            this.ClearFields.Location = new System.Drawing.Point(21, 328);
+            this.ClearFields.Location = new System.Drawing.Point(27, 374);
             this.ClearFields.Name = "ClearFields";
             this.ClearFields.Size = new System.Drawing.Size(75, 23);
             this.ClearFields.TabIndex = 11;
@@ -136,11 +137,22 @@
             this.Salary.Size = new System.Drawing.Size(100, 20);
             this.Salary.TabIndex = 12;
             // 
+            // Update
+            // 
+            this.Update.Location = new System.Drawing.Point(101, 320);
+            this.Update.Name = "Update";
+            this.Update.Size = new System.Drawing.Size(75, 23);
+            this.Update.TabIndex = 13;
+            this.Update.Text = "Обновить";
+            this.Update.UseVisualStyleBackColor = true;
+            this.Update.Click += new System.EventHandler(this.Update_Click);
+            // 
             // AddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 424);
+            this.Controls.Add(this.Update);
             this.Controls.Add(this.Salary);
             this.Controls.Add(this.ClearFields);
             this.Controls.Add(this.DeleteSelectEmployee);
@@ -172,5 +184,6 @@
         private System.Windows.Forms.Button DeleteSelectEmployee;
         private System.Windows.Forms.Button ClearFields;
         private System.Windows.Forms.TextBox Salary;
+        private System.Windows.Forms.Button Update;
     }
 }

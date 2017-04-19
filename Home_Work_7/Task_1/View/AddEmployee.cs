@@ -54,7 +54,6 @@ namespace Task_1.View
 
             }
             
-           
         }
 
         private void ClearFields_Click(object sender, EventArgs e)
@@ -68,9 +67,12 @@ namespace Task_1.View
 
         private void AddEployees_Click(object sender, EventArgs e)
         {
-            Employee emp = new Employee() {  Name = Name.Text,
-                                             DepartmentId = depRepository.GetList().FirstOrDefault(name=>name.Name == DepId.SelectedItem).Id, 
-                                             Age = Convert.ToInt32(Age.Text), Salary = Convert.ToInt32(Salary.Text)
+            Employee emp = new Employee()
+            {
+                Name = Name.Text,
+                DepartmentId = depRepository.GetList().FirstOrDefault(name => name.Name == DepId.SelectedItem).Id,
+                Age = Convert.ToInt32(Age.Text),
+                Salary = Convert.ToInt32(Salary.Text)
             };
 
             empRepository.Create(emp);
@@ -82,11 +84,36 @@ namespace Task_1.View
         private void DeleteSelectEmployee_Click(object sender, EventArgs e)
         {
             
-            empRepository.Delete((int)EmployeesGrid.CurrentCell.Value);
+            empRepository.Delete((int)EmployeesGrid.CurrentRow.Cells[0].Value);
             EmployeesGrid.Update();
             EmployeesGrid.Refresh();
             UpdateGrid();
            
+        }
+
+        private void Update_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Employee empTmp = new Employee()
+                {
+                    Id = (int)EmployeesGrid.CurrentRow.Cells[0].Value,
+                    Name = Name.Text,
+                    Age = Convert.ToInt32(Age.Text),
+                    Salary = Convert.ToInt32(Salary.Text)
+                };
+                empRepository.Update(empTmp);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                UpdateGrid();
+            }
+            
         }
     }
 }
