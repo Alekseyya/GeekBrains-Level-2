@@ -33,6 +33,7 @@
             this.DepartmentGrid = new System.Windows.Forms.DataGridView();
             this.AddDepartament = new System.Windows.Forms.Button();
             this.DeleteDepartament = new System.Windows.Forms.Button();
+            this.Update = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DepartmentGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +63,7 @@
             // 
             // AddDepartament
             // 
-            this.AddDepartament.Location = new System.Drawing.Point(54, 127);
+            this.AddDepartament.Location = new System.Drawing.Point(22, 127);
             this.AddDepartament.Name = "AddDepartament";
             this.AddDepartament.Size = new System.Drawing.Size(75, 23);
             this.AddDepartament.TabIndex = 3;
@@ -80,11 +81,22 @@
             this.DeleteDepartament.UseVisualStyleBackColor = true;
             this.DeleteDepartament.Click += new System.EventHandler(this.DeleteDepartament_Click);
             // 
+            // Update
+            // 
+            this.Update.Location = new System.Drawing.Point(126, 127);
+            this.Update.Name = "Update";
+            this.Update.Size = new System.Drawing.Size(75, 23);
+            this.Update.TabIndex = 5;
+            this.Update.Text = "Обновить";
+            this.Update.UseVisualStyleBackColor = true;
+            this.Update.Click += new System.EventHandler(this.Update_Click);
+            // 
             // AddDepartment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(569, 348);
+            this.Controls.Add(this.Update);
             this.Controls.Add(this.DeleteDepartament);
             this.Controls.Add(this.AddDepartament);
             this.Controls.Add(this.DepartmentGrid);
@@ -105,5 +117,6 @@
         private System.Windows.Forms.DataGridView DepartmentGrid;
         private System.Windows.Forms.Button AddDepartament;
         private System.Windows.Forms.Button DeleteDepartament;
+        private System.Windows.Forms.Button Update;
     }
 }

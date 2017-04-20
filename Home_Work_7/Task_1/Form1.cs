@@ -21,6 +21,8 @@ namespace Task_1
         public Form1()
         {
             InitializeComponent();
+ 
+            
             empRepository = new EmployeeRepository();
             depRepository = new DepartmentRepository();
             

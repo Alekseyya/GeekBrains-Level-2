@@ -14,6 +14,7 @@ namespace Task_1.Model.Repository
         public DepartmentRepository()
         {
             this.context = new Office();
+            
 
         }
         public void Create(Department item)
@@ -47,7 +48,9 @@ namespace Task_1.Model.Repository
 
         public void Update(Department item)
         {
-            context.Entry(item).State = EntityState.Modified;
+            Department dep = context.Departments.Find(item.Id);
+            dep.Id = (item.Id != 0) ? item.Id : dep.Id;
+            dep.Name = (item.Name != null) ? item.Name : dep.Name;
             context.SaveChanges();
         }
 

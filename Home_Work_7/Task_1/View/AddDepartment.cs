@@ -55,5 +55,28 @@ namespace Task_1.View
             depRepository.Delete((int)DepartmentGrid.CurrentCell.Value);
             UpdateGrid();
         }
+
+        private void Update_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Department depTmp = new Department()
+                {
+                    Id = (int)DepartmentGrid.CurrentRow.Cells[0].Value,
+                    Name = Name.Text,
+                    
+                };
+                depRepository.Update(depTmp);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                UpdateGrid();
+            }
+        }
     }
 }
