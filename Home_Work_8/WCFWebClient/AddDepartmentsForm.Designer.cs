@@ -28,21 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DepGrid = new System.Windows.Forms.DataGridView();
             this.Add = new System.Windows.Forms.Button();
             this.Update = new System.Windows.Forms.Button();
             this.textBoxDep = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.Delete = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.DepGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // DepGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(252, 46);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 0;
+            this.DepGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DepGrid.Location = new System.Drawing.Point(252, 46);
+            this.DepGrid.Name = "DepGrid";
+            this.DepGrid.Size = new System.Drawing.Size(240, 150);
+            this.DepGrid.TabIndex = 0;
             // 
             // Add
             // 
@@ -52,6 +53,7 @@
             this.Add.TabIndex = 1;
             this.Add.Text = "Добавить";
             this.Add.UseVisualStyleBackColor = true;
+            this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
             // Update
             // 
@@ -61,6 +63,7 @@
             this.Update.TabIndex = 2;
             this.Update.Text = "Обновить";
             this.Update.UseVisualStyleBackColor = true;
+            this.Update.Click += new System.EventHandler(this.Update_Click);
             // 
             // textBoxDep
             // 
@@ -78,19 +81,30 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Название департамента";
             // 
+            // Delete
+            // 
+            this.Delete.Location = new System.Drawing.Point(427, 225);
+            this.Delete.Name = "Delete";
+            this.Delete.Size = new System.Drawing.Size(75, 23);
+            this.Delete.TabIndex = 5;
+            this.Delete.Text = "Удалить";
+            this.Delete.UseVisualStyleBackColor = true;
+            this.Delete.Click += new System.EventHandler(this.Delete_Click);
+            // 
             // AddDepartmentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(663, 424);
+            this.Controls.Add(this.Delete);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxDep);
             this.Controls.Add(this.Update);
             this.Controls.Add(this.Add);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.DepGrid);
             this.Name = "AddDepartmentsForm";
             this.Text = "AddDepartmentsForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DepGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,10 +112,11 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DepGrid;
         private System.Windows.Forms.Button Add;
         private System.Windows.Forms.Button Update;
         private System.Windows.Forms.TextBox textBoxDep;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button Delete;
     }
 }

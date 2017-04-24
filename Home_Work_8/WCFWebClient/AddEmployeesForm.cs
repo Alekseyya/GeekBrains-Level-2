@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WCFWebClient.Model;
@@ -21,9 +23,7 @@ namespace WCFWebClient
             InitializeComponent();
             functionRep = new localhost.Service();
             UpdateGrid();
-
             
-
         }
 
         private async void UpdateGrid()
@@ -37,14 +37,20 @@ namespace WCFWebClient
             });
 
 
+
             EmpGrid.DataSource = dsEmp.ToArray();
             
-            EmpGrid.SelectionChanged += Select;
+            //EmpGrid.SelectionChanged += Select;
         }
         public async void Select(object obj, EventArgs e)
         {
             DataGridView grid = (DataGridView)obj;
-            var employee = await Task<Employee>.Run(() => { return functionRep.GetItemEmp((int)grid.CurrentRow.Cells[0].Value, true); });
+
+            var employee = await Task.Run(() =>
+            {
+                return functionRep.GetItemEmp((int)grid.CurrentRow.Cells[0].Value, true);
+                
+            });
             if (employee != null)
             {
                 textBoxName.Text = employee.Name;
@@ -56,11 +62,12 @@ namespace WCFWebClient
                 textBoxSalary.Text = employee.Salary.ToString();
 
             }
+            
         }
 
-        private void Add_Click(object sender, EventArgs e)
+        private async void Add_Click(object sender, EventArgs e)
         {
-            
+
             localhost.Employee emp = new localhost.Employee()
             {
                 Name = textBoxName.Text,
@@ -68,7 +75,7 @@ namespace WCFWebClient
                 Age = Convert.ToInt32(textBoxAge.Text),
                 Salary = Convert.ToInt32(textBoxSalary.Text)
             };
-            
+
 
             functionRep.CreateEmp(emp);
             //empRepository.Create(emp); //////////////

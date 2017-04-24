@@ -15,9 +15,9 @@ namespace WCFWebService.Model
         {
             this.Employees = new List<Employee>();
         }
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int Id { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public string Name { get; set; }
         [IgnoreDataMember]
         public virtual ICollection<Employee> Employees { get; set; }

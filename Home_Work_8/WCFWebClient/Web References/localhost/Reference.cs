@@ -41,6 +41,14 @@ namespace WCFWebClient.localhost {
         
         private System.Threading.SendOrPostCallback UpdateEmpOperationCompleted;
         
+        private System.Threading.SendOrPostCallback CreateDepOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DeleteDepOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetItemDepOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateDepOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -96,6 +104,18 @@ namespace WCFWebClient.localhost {
         
         /// <remarks/>
         public event UpdateEmpCompletedEventHandler UpdateEmpCompleted;
+        
+        /// <remarks/>
+        public event CreateDepCompletedEventHandler CreateDepCompleted;
+        
+        /// <remarks/>
+        public event DeleteDepCompletedEventHandler DeleteDepCompleted;
+        
+        /// <remarks/>
+        public event GetItemDepCompletedEventHandler GetItemDepCompleted;
+        
+        /// <remarks/>
+        public event UpdateDepCompletedEventHandler UpdateDepCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService/GetListEmp", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -274,6 +294,124 @@ namespace WCFWebClient.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService/CreateDep", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void CreateDep([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Department item) {
+            this.Invoke("CreateDep", new object[] {
+                        item});
+        }
+        
+        /// <remarks/>
+        public void CreateDepAsync(Department item) {
+            this.CreateDepAsync(item, null);
+        }
+        
+        /// <remarks/>
+        public void CreateDepAsync(Department item, object userState) {
+            if ((this.CreateDepOperationCompleted == null)) {
+                this.CreateDepOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateDepOperationCompleted);
+            }
+            this.InvokeAsync("CreateDep", new object[] {
+                        item}, this.CreateDepOperationCompleted, userState);
+        }
+        
+        private void OnCreateDepOperationCompleted(object arg) {
+            if ((this.CreateDepCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CreateDepCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService/DeleteDep", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void DeleteDep(int id, [System.Xml.Serialization.XmlIgnoreAttribute()] bool idSpecified) {
+            this.Invoke("DeleteDep", new object[] {
+                        id,
+                        idSpecified});
+        }
+        
+        /// <remarks/>
+        public void DeleteDepAsync(int id, bool idSpecified) {
+            this.DeleteDepAsync(id, idSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteDepAsync(int id, bool idSpecified, object userState) {
+            if ((this.DeleteDepOperationCompleted == null)) {
+                this.DeleteDepOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteDepOperationCompleted);
+            }
+            this.InvokeAsync("DeleteDep", new object[] {
+                        id,
+                        idSpecified}, this.DeleteDepOperationCompleted, userState);
+        }
+        
+        private void OnDeleteDepOperationCompleted(object arg) {
+            if ((this.DeleteDepCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteDepCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService/GetItemDep", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public Department GetItemDep(int id, [System.Xml.Serialization.XmlIgnoreAttribute()] bool idSpecified) {
+            object[] results = this.Invoke("GetItemDep", new object[] {
+                        id,
+                        idSpecified});
+            return ((Department)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetItemDepAsync(int id, bool idSpecified) {
+            this.GetItemDepAsync(id, idSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void GetItemDepAsync(int id, bool idSpecified, object userState) {
+            if ((this.GetItemDepOperationCompleted == null)) {
+                this.GetItemDepOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetItemDepOperationCompleted);
+            }
+            this.InvokeAsync("GetItemDep", new object[] {
+                        id,
+                        idSpecified}, this.GetItemDepOperationCompleted, userState);
+        }
+        
+        private void OnGetItemDepOperationCompleted(object arg) {
+            if ((this.GetItemDepCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetItemDepCompleted(this, new GetItemDepCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService/UpdateDep", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void UpdateDep([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Department item) {
+            this.Invoke("UpdateDep", new object[] {
+                        item});
+        }
+        
+        /// <remarks/>
+        public void UpdateDepAsync(Department item) {
+            this.UpdateDepAsync(item, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateDepAsync(Department item, object userState) {
+            if ((this.UpdateDepOperationCompleted == null)) {
+                this.UpdateDepOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateDepOperationCompleted);
+            }
+            this.InvokeAsync("UpdateDep", new object[] {
+                        item}, this.UpdateDepOperationCompleted, userState);
+        }
+        
+        private void OnUpdateDepOperationCompleted(object arg) {
+            if ((this.UpdateDepCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateDepCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -302,21 +440,13 @@ namespace WCFWebClient.localhost {
         
         private int ageField;
         
-        private bool ageFieldSpecified;
-        
         private System.Nullable<int> departmentIdField;
         
-        private bool departmentIdFieldSpecified;
-        
         private int idField;
-        
-        private bool idFieldSpecified;
         
         private string nameField;
         
         private double salaryField;
-        
-        private bool salaryFieldSpecified;
         
         /// <remarks/>
         public int Age {
@@ -325,17 +455,6 @@ namespace WCFWebClient.localhost {
             }
             set {
                 this.ageField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AgeSpecified {
-            get {
-                return this.ageFieldSpecified;
-            }
-            set {
-                this.ageFieldSpecified = value;
             }
         }
         
@@ -351,34 +470,12 @@ namespace WCFWebClient.localhost {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DepartmentIdSpecified {
-            get {
-                return this.departmentIdFieldSpecified;
-            }
-            set {
-                this.departmentIdFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
         public int Id {
             get {
                 return this.idField;
             }
             set {
                 this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool IdSpecified {
-            get {
-                return this.idFieldSpecified;
-            }
-            set {
-                this.idFieldSpecified = value;
             }
         }
         
@@ -402,17 +499,6 @@ namespace WCFWebClient.localhost {
                 this.salaryField = value;
             }
         }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool SalarySpecified {
-            get {
-                return this.salaryFieldSpecified;
-            }
-            set {
-                this.salaryFieldSpecified = value;
-            }
-        }
     }
     
     /// <remarks/>
@@ -425,8 +511,6 @@ namespace WCFWebClient.localhost {
         
         private int idField;
         
-        private bool idFieldSpecified;
-        
         private string nameField;
         
         /// <remarks/>
@@ -436,17 +520,6 @@ namespace WCFWebClient.localhost {
             }
             set {
                 this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool IdSpecified {
-            get {
-                return this.idFieldSpecified;
-            }
-            set {
-                this.idFieldSpecified = value;
             }
         }
         
@@ -551,6 +624,44 @@ namespace WCFWebClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void UpdateEmpCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void CreateDepCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void DeleteDepCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void GetItemDepCompletedEventHandler(object sender, GetItemDepCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetItemDepCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetItemDepCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Department Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Department)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void UpdateDepCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

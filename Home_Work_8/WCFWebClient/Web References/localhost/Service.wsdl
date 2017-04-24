@@ -43,6 +43,30 @@
   <wsdl:message name="IService_UpdateEmp_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateEmpResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_CreateDep_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDep" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateDep_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDepResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteDep_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDep" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteDep_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDepResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetItemDep_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemDep" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetItemDep_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemDepResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateDep_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDep" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateDep_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDepResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="GetListEmp">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetListEmp" message="tns:IService_GetListEmp_InputMessage" />
@@ -67,6 +91,22 @@
     <wsdl:operation name="UpdateEmp">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateEmp" message="tns:IService_UpdateEmp_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateEmpResponse" message="tns:IService_UpdateEmp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateDep">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateDep" message="tns:IService_CreateDep_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateDepResponse" message="tns:IService_CreateDep_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDep">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteDep" message="tns:IService_DeleteDep_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteDepResponse" message="tns:IService_DeleteDep_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemDep">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetItemDep" message="tns:IService_GetItemDep_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetItemDepResponse" message="tns:IService_GetItemDep_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDep">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateDep" message="tns:IService_UpdateDep_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateDepResponse" message="tns:IService_UpdateDep_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -118,6 +158,42 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateEmp">
       <soap:operation soapAction="http://tempuri.org/IService/UpdateEmp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDep">
+      <soap:operation soapAction="http://tempuri.org/IService/CreateDep" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDep">
+      <soap:operation soapAction="http://tempuri.org/IService/DeleteDep" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemDep">
+      <soap:operation soapAction="http://tempuri.org/IService/GetItemDep" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDep">
+      <soap:operation soapAction="http://tempuri.org/IService/UpdateDep" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

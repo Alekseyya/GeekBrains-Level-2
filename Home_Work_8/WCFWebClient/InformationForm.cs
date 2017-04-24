@@ -52,12 +52,14 @@ namespace WCFWebClient
 
             AddEmployeesForm addEmpForm = new AddEmployeesForm();
             addEmpForm.Show();
+            addEmpForm.FormClosed += (s, ex) => { UpdateGrid(); };
         }
 
         private void AddDep_Click(object sender, EventArgs e)
         {
             AddDepartmentsForm addDepForm = new AddDepartmentsForm();
             addDepForm.Show();
+            addDepForm.FormClosed += (s, ex) => { UpdateGrid(); };
         }
     }
 }

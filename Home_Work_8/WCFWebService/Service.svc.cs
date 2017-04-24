@@ -54,7 +54,7 @@ namespace WCFWebService
 
         public Employee GetItemEmp(int id)
         {
-            return empController.GetItem(id);
+             return empController.GetItem(id);
         }
 
         public void CreateEmp(Employee item)
@@ -65,11 +65,32 @@ namespace WCFWebService
         public void DeleteEmp(int id)
         {
             empController.Delete(id);
+
         }
 
         public void UpdateEmp(Employee item)
         {
             empController.Update(item);
+        }
+
+        public void CreateDep(Department item)
+        {
+            depController.Create(item);
+        }
+
+        public void DeleteDep(int id)
+        {
+            depController.Delete(id);
+        }
+
+        public Department GetItemDep(int id)
+        {
+            return depController.GetItem(id);
+        }
+
+        public void UpdateDep(Department item)
+        {
+            depController.Update(item);
         }
     }
 }

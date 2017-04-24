@@ -11,15 +11,15 @@ namespace WCFWebService.Model
     [Table("Employees")]
     public class Employee
     {
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int Id { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public string Name { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int Age { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public double Salary { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int? DepartmentId { get; set; }
         [IgnoreDataMember]
         [ForeignKey("DepartmentId")]

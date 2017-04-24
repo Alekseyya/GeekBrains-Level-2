@@ -27,5 +27,15 @@ namespace WCFWebService
         void DeleteEmp(int id);
         [OperationContract]
         void UpdateEmp(Employee item);
+        //для departments
+
+        [OperationContract]
+        void CreateDep(Department item);
+        [OperationContract]
+        void DeleteDep(int id);
+        [OperationContract]
+        Department GetItemDep(int id);
+        [OperationContract]
+        void UpdateDep(Department item);
     }
 }
