@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Task_1.Model
 {
-    public class OfficeContextIntializer
+    public class OfficeContextIntializer :DropCreateDatabaseAlways<Office>
     {
-        public void Seed(Office context)
+        protected override void Seed(Office context)
         {
             
             context.Departments.AddRange(new List<Department>

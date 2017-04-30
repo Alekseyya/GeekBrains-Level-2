@@ -10,7 +10,7 @@
         
         public Office(): base("name=Office")
         {
-            //Database.SetInitializer(new OfficeContextIntializer());
+            Database.SetInitializer(new OfficeContextIntializer());
             
         }
                

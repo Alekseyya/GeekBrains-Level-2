@@ -41,7 +41,7 @@ namespace Task_1.View
         public void Select(object obj, EventArgs e)
         {
             DataGridView grid = (DataGridView)obj;
-            Employee employee = empRepository.GetItem((int)grid.CurrentCell.Value);
+            Employee employee = empRepository.GetItem((int)grid.CurrentRow.Cells[0].Value);
             if (employee != null)
             {
                 Name.Text = employee.Name;
