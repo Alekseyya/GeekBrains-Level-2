@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Soap;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -48,6 +50,24 @@ namespace Task_1
             CBEmployee.SelectedIndexChanged += CBEmployee_SelectedIndexChanged;
 
             MainForm_Update();
+
+            // создаем объект SoapFormatter
+            SoapFormatter formatter = new SoapFormatter();
+            // получаем поток, куда будем записывать сериализованный объект
+            //using (FileStream fs = new FileStream("people.soap", FileMode.OpenOrCreate))
+            //{
+            //    formatter.Serialize(fs, employes.ToArray());
+
+            //    Console.WriteLine("Объект сериализован");
+            //}
+
+            using (FileStream fs = new FileStream("people.soap", FileMode.OpenOrCreate))
+            {
+                Employee[] newEmployee = (Employee[])formatter.Deserialize(fs);
+
+                Console.WriteLine("Объект десериализован");
+                var t = newEmployee;
+            }
 
 
         }
